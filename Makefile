@@ -163,6 +163,10 @@ ifeq ($(HOSTARCH),$(ARCH))
 CROSS_COMPILE ?=
 endif
 
+ifeq (arm,$(ARCH))
+CROSS_COMPILE ?= arm-cortex_a8-linux-gnueabi-
+endif
+
 # load other configuration
 include $(TOPDIR)/config.mk
 
@@ -3183,6 +3187,9 @@ omap3_zoom2_config :	unconfig
 
 smdkc100_config:	unconfig
 	@$(MKCONFIG) $(@:_config=) arm arm_cortexa8 smdkc100 samsung s5pc1xx
+
+fsc100_config:	unconfig
+	@$(MKCONFIG) $(@:_config=) arm arm_cortexa8 fsc100 samsung s5pc1xx
 
 #########################################################################
 ## XScale Systems
